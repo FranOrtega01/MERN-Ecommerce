@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <div class="card-header">
+            <h3>Upload Documents</h3>
+        </div>
+        <div class="card-body">
+            <form action="/api/users/{{user._id}}/documents" method="POST" enctype="multipart/form-data">
+                <div>
+                    <input type="hidden" class="form-control" name="type_document" value="document"></input>
+                </div>
+                <div class="form-group">
+                    <h5>Identificación : </h5><input type="file" name="Identificacion" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <h5>Comprobante de domicilio : </h5><input type="file" name="ComprobanteDomicilio" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <h5>Comprobante de estado de cuenta : </h5><input type="file" name="ComprobanteEstadoCuenta" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

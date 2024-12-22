@@ -1,0 +1,32 @@
+<h1 class="display-5 text-center">Bienvenido {{user.first_name}}</h1>
+<br>
+
+    <div class="row">
+        {{#each data.docs}}
+        <div class="product card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <img src={{thumbnails}} alt="{{title}}">
+                <h5 class="card-title">{{title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+                <p class="card-text">${{price}}</p>
+                <a href="/products/{{_id}}" class="card-link">Leer más</a>
+
+                <form action="/api/carts/{{../user.cart._id}}/products/{{_id}}" method="post">
+                    <input class="btn btn-primary" id="formSubmit" type="submit" value="Agregar al carrito">
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <div>
+        {{#if data.hasPrevPage}}
+            <a href="{{data.prevLink}}" style="border: 1px solid black; border-radius:4px; padding:4px">{{data.prevPage}}</a>
+        {{/if}}
+        Página <b>{{data.page}}</b>
+        {{#if data.hasNextPage}}
+            <a href="{{data.nextLink}}" style="border: 1px solid black; border-radius:4px; padding:4px">{{data.nextPage}}</a>
+        {{/if}}
+    </div>
+
+    <a class="btn btn-dark" href="/session/profile">Mi Perfil</a>

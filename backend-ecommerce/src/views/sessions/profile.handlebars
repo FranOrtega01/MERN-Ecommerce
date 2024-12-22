@@ -1,0 +1,40 @@
+<h1>Mi Perfil</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
+        <p class="card-text">Edad: {{user.age}}</p>
+        <p class="card-text">Rol: {{user.rol}}</p>
+
+        <form action="/api/users/{{user._id}}/documents" method="post">
+            <div>
+                <input type="hidden" class="form-control" name="type_document" value="profile"></input>
+            </div>
+            <input type="file" name="profile" />
+            <button class="btn btn-primary" type="submit">Cambiar foto de perfil</button>
+        </form>
+
+
+        {{#if (eq user.rol 'premium')}}
+
+        <a href="/products/create">Crear producto</a>
+        <form action="/api/users/premium/{{user._id}}/unsubscribe" method="post">
+            <button type="submit">Dejar de ser Premium</button>
+        </form>
+
+        {{else}}
+        <div class="align-items-center my-4" style="display:flex">
+            <a class="me-3" href="/api/users/premium/{{user._id}}">Subir documentos</a>
+            <form action="/api/users/premium/{{user._id}}" method="post">
+                <button class="btn btn-warning" type="submit">Hacerse Premium</button>
+            </form>
+        </div>
+        {{/if}}
+
+        <a class="btn btn-danger" href="/session/logout" class="card-link">Cerrar sesión</a>
+        <a class="btn btn-primary" href="/cart/{{user.cart._id}}">My Cart</a>
+    </div>
+</div>
+
+<a class="btn btn-dark mt-2" href="/products">Go back</a>

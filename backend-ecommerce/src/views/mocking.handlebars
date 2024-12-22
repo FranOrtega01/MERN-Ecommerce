@@ -1,0 +1,21 @@
+<h1 class="display-5 text-center">Bienvenido {{user.first_name}}</h1>
+<br>
+
+    <div class="row">
+        {{#each data}}
+        <div class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+                <p class="card-text">${{price}}</p>
+                <a href="/products/{{_id}}" class="card-link">Leer más</a>
+
+                <form action="/api/carts/{{../user.cart._id}}/products/{{_id}}" method="post">
+                    <input class="btn btn-primary" id="formSubmit" type="submit" value="Agregar al carrito">
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <a class="btn btn-dark" href="/session/profile">Mi Perfil</a>

@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  width: 100%;
+}
+
+.products {
+  list-style: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  border: 1px solid white;
+  font-size: 16px;
+  flex: 1 1;
+
+  img {
+    width: 200px;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 100px auto;
+  font-size: 40px;
+  transition: all 400ms;
+  min-height: 100vh;
+
+  &.active {
+    grid-template-columns: 230px auto;
+  }
+}
